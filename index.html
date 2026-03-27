@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAHO – Centro de Servicio Automotriz | Alajuelita, San José</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--rojo:#C0392B;--rojo-dark:#922B21;--negro:#111;--blanco:#fff;--acento:#E74C3C;--texto:#555}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;color:var(--negro);background:var(--blanco);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--negro);height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;border-bottom:3px solid var(--rojo)}
+.nav-logo{height:68px;border-radius:4px;display:block}
+.nav-links{display:flex;gap:1.4rem;list-style:none}
+.nav-links a{color:#bbb;text-decoration:none;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:color .2s}
+.nav-links a:hover{color:var(--acento)}
+.nav-right{display:flex;align-items:center;gap:.75rem}
+.nav-social{display:flex;gap:.5rem}
+.nav-social a{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.08);color:#ccc;transition:background .2s,color .2s;text-decoration:none}
+.nav-social a:hover{background:var(--rojo);color:#fff}
+.nav-social svg{width:15px;height:15px;fill:currentColor}
+.nav-wa{background:var(--rojo);color:#fff;padding:.55rem 1.1rem;border-radius:4px;font-weight:800;font-size:.8rem;text-decoration:none;transition:background .2s;white-space:nowrap}
+.nav-wa:hover{background:var(--rojo-dark)}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--negro);display:flex;align-items:center;padding-top:68px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(192,57,43,.04) 60px,rgba(192,57,43,.04) 61px)}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-badge{display:inline-block;background:var(--rojo);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:2px;margin-bottom:1.2rem}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5.5rem);color:#fff;line-height:.92;letter-spacing:2px;margin-bottom:1.2rem}
+.hero h1 em{color:var(--acento);font-style:normal;display:block}
+.hero p{color:#999;font-size:1.05rem;line-height:1.75;margin-bottom:2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn-red{background:var(--rojo);color:#fff;padding:.9rem 2rem;border-radius:4px;font-weight:800;font-size:.95rem;letter-spacing:.5px;text-decoration:none;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:background .2s,transform .1s}
+.btn-red:hover{background:var(--rojo-dark);transform:translateY(-1px)}
+.btn-ghost{border:2px solid #444;color:#aaa;padding:.9rem 2rem;border-radius:4px;font-weight:700;font-size:.95rem;letter-spacing:.5px;text-decoration:none;text-transform:uppercase;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--acento);color:var(--acento)}
+.hero-social{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.hero-social span{color:#666;font-size:.8rem;text-transform:uppercase;letter-spacing:1px}
+.hero-social a{display:flex;align-items:center;gap:.4rem;color:#aaa;text-decoration:none;font-size:.85rem;font-weight:700;padding:.4rem .9rem;border:1px solid #333;border-radius:20px;transition:border-color .2s,color .2s}
+.hero-social a:hover{border-color:var(--acento);color:var(--acento)}
+.hero-social svg{width:14px;height:14px;fill:currentColor}
+.hero-img-wrap{position:relative}
+.hero-img-main{width:100%;border-radius:8px;object-fit:cover;height:420px;display:block}
+.hero-img-badge{position:absolute;bottom:-16px;left:-16px;background:var(--rojo);color:#fff;padding:1rem 1.25rem;border-radius:6px;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1px;line-height:1.1}
+.hero-img-badge small{display:block;font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:1px;opacity:.85;text-transform:uppercase}
+
+/* STATS */
+.stats-bar{background:var(--rojo);padding:1.5rem 2rem}
+.stats-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:1rem}
+.stat-item{text-align:center;color:#fff}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;line-height:1}
+.stat-lbl{font-size:.8rem;opacity:.85;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+
+/* TICKER */
+.ticker{background:var(--negro);padding:.65rem 0;overflow:hidden;white-space:nowrap;border-bottom:1px solid #222}
+.ticker-track{display:inline-flex;gap:3rem;animation:tick 24s linear infinite}
+.ticker span{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:3px;color:#666}
+.ticker span::before{content:"★  ";font-size:.8rem;color:var(--rojo)}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.sec{padding:5rem 2rem}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-tag{font-size:.72rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--rojo);margin-bottom:.4rem}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,2.8rem);letter-spacing:1px;margin-bottom:.6rem}
+.sec-sub{color:var(--texto);font-size:1rem;line-height:1.7;max-width:580px;margin-bottom:2.5rem}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
+.srv{background:#fff;border:1px solid #e8e8e8;border-top:4px solid var(--rojo);border-radius:8px;padding:2rem;transition:box-shadow .2s,transform .2s}
+.srv:hover{box-shadow:0 8px 28px rgba(0,0,0,.1);transform:translateY(-2px)}
+.srv-ico{font-size:2.2rem;margin-bottom:.85rem;display:block}
+.srv h3{font-weight:800;font-size:1.05rem;margin-bottom:.4rem;color:var(--negro)}
+.srv p{color:var(--texto);font-size:.92rem;line-height:1.6}
+
+/* GALLERY */
+.gallery-sec{background:#f4f4f4;padding:5rem 2rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery-item{overflow:hidden;border-radius:8px;position:relative;cursor:pointer;height:240px}
+.gallery-item.big{grid-column:span 2;height:300px}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.gallery-item:hover img{transform:scale(1.05)}
+.overlay{position:absolute;inset:0;background:rgba(17,17,17,0);display:flex;align-items:flex-end;padding:1rem;transition:background .3s}
+.gallery-item:hover .overlay{background:rgba(17,17,17,.55)}
+.overlay-label{color:#fff;font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:1px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.gallery-item:hover .overlay-label{opacity:1;transform:translateY(0)}
+
+/* DARK GASES */
+.dark-sec{background:var(--negro);padding:5rem 2rem}
+.dark-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.dark-inner h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3rem);color:#fff;line-height:1;margin-bottom:1.2rem;letter-spacing:1px}
+.dark-inner h2 em{color:var(--acento);font-style:normal}
+.dark-inner p{color:#999;font-size:1rem;line-height:1.75;margin-bottom:1.2rem}
+.checklist{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.checklist li{color:#ccc;font-size:.95rem;display:flex;align-items:flex-start;gap:.7rem}
+.checklist li::before{content:"✓";color:var(--acento);font-weight:800;font-size:1.1rem;flex-shrink:0}
+.dekra-badge{background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.3);border-radius:6px;padding:1.4rem 1.6rem;margin-top:2rem}
+.dekra-badge strong{color:#fff;font-size:1rem;display:block;margin-bottom:.3rem}
+.dekra-badge span{color:#999;font-size:.88rem}
+.gas-visual{display:flex;flex-direction:column;gap:1rem}
+.gas-bar-wrap{background:rgba(255,255,255,.06);border-radius:6px;padding:1.2rem 1.4rem}
+.gas-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.gas-label span{font-size:.85rem;color:#bbb;font-weight:700}
+.gas-label strong{color:#27ae60;font-size:.9rem}
+.gas-bar{background:rgba(255,255,255,.08);border-radius:20px;height:8px;overflow:hidden}
+.gas-fill{height:100%;border-radius:20px;background:var(--rojo)}
+.equipo-img{width:100%;border-radius:8px;object-fit:cover;height:220px}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
+.why-card{text-align:center;padding:2rem 1.5rem;border:1px solid #eee;border-radius:8px;transition:box-shadow .2s}
+.why-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.why-ico{font-size:2.5rem;display:block;margin-bottom:1rem}
+.why-card h3{font-weight:800;font-size:1rem;margin-bottom:.4rem;color:var(--negro)}
+.why-card p{color:var(--texto);font-size:.88rem;line-height:1.6}
+
+/* FORMULARIO DE CITAS */
+.form-sec{background:#f9f9f9;padding:5rem 2rem}
+.form-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.form-box{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:2.5rem;border-top:4px solid var(--rojo)}
+.form-box h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;margin-bottom:.4rem;letter-spacing:1px}
+.form-box p{color:var(--texto);font-size:.9rem;margin-bottom:1.75rem;line-height:1.6}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-weight:700;font-size:.85rem;margin-bottom:.4rem;color:#333;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;padding:.75rem 1rem;border:1.5px solid #ddd;border-radius:6px;
+  font-family:'Nunito',sans-serif;font-size:.95rem;color:var(--negro);
+  background:#fff;transition:border-color .2s,box-shadow .2s;outline:none
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{border-color:var(--rojo);box-shadow:0 0 0 3px rgba(192,57,43,.1)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{
+  width:100%;background:var(--rojo);color:#fff;padding:1rem;
+  border:none;border-radius:6px;font-family:'Nunito',sans-serif;
+  font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:1px;
+  cursor:pointer;transition:background .2s,transform .1s;margin-top:.5rem
+}
+.btn-submit:hover{background:var(--rojo-dark);transform:translateY(-1px)}
+.form-success{display:none;background:#eafaf1;border:1.5px solid #27ae60;border-radius:6px;padding:1.25rem;text-align:center;margin-top:1rem}
+.form-success p{color:#1e8449;font-weight:700;font-size:.95rem}
+.form-info{display:flex;flex-direction:column;gap:1.5rem;padding-top:.5rem}
+.info-card{background:#fff;border:1px solid #e5e5e5;border-left:4px solid var(--rojo);border-radius:8px;padding:1.25rem 1.5rem}
+.info-card h4{font-weight:800;font-size:.95rem;margin-bottom:.3rem;color:var(--negro)}
+.info-card p{color:var(--texto);font-size:.88rem;line-height:1.6}
+.info-card a{color:var(--rojo);text-decoration:none;font-weight:700}
+
+/* MAPA */
+.map-sec{padding:0}
+.map-sec iframe{display:block;width:100%;height:420px;border:0;filter:grayscale(20%)}
+.map-header{background:var(--negro);padding:3rem 2rem 2rem;text-align:center}
+.map-header h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,2.8rem);color:#fff;letter-spacing:1px;margin-bottom:.4rem}
+.map-header p{color:#888;font-size:.95rem}
+
+/* SOCIAL SEC */
+.social-sec{background:var(--negro);padding:4rem 2rem;text-align:center}
+.social-sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);color:#fff;letter-spacing:2px;margin-bottom:.5rem}
+.social-sec p{color:#888;font-size:.95rem;margin-bottom:2rem}
+.social-btns{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap}
+.social-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;border-radius:6px;font-weight:800;font-size:1rem;text-decoration:none;transition:opacity .2s,transform .1s}
+.social-btn:hover{opacity:.9;transform:translateY(-1px)}
+.social-btn svg{width:22px;height:22px;fill:currentColor}
+.btn-ig{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff}
+.btn-fb{background:#1877F2;color:#fff}
+
+/* CONTACTO */
+.contact-sec{background:#fff;padding:5rem 2rem}
+.contact-inner{max-width:900px;margin:0 auto;text-align:center}
+.contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-bottom:3rem}
+.cc{background:#f9f9f9;border:1px solid #e5e5e5;border-radius:8px;padding:1.75rem;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.cc-ico{font-size:2rem}
+.cc h4{font-weight:800;font-size:.95rem;color:var(--negro)}
+.cc a,.cc p{color:var(--texto);font-size:.9rem;text-decoration:none}
+.cc a:hover{color:var(--acento)}
+.wa-big{display:inline-flex;align-items:center;gap:.75rem;background:#25D366;color:#fff;padding:1.1rem 2.5rem;border-radius:50px;font-weight:800;font-size:1.1rem;text-decoration:none;transition:opacity .2s}
+.wa-big:hover{opacity:.9}
+
+/* FOOTER */
+footer{background:var(--negro);padding:2.5rem 2rem;text-align:center;border-top:3px solid var(--rojo)}
+.footer-logo{height:50px;border-radius:4px;margin:0 auto 1rem;display:block}
+.footer-social{display:flex;justify-content:center;gap:.75rem;margin-bottom:1rem}
+.footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1px solid #333;color:#888;text-decoration:none;transition:border-color .2s,color .2s}
+.footer-social a:hover{border-color:var(--acento);color:var(--acento)}
+.footer-social svg{width:15px;height:15px;fill:currentColor}
+
+/* HERO LOGO BIG */
+.hero-logo-big{height:110px;border-radius:10px;margin-bottom:1.75rem;display:block;box-shadow:0 6px 32px rgba(192,57,43,.55);border:2px solid rgba(192,57,43,.35)}
+
+/* SECTION DIVIDER */
+.sec-divider{width:56px;height:4px;background:var(--rojo);border-radius:2px;margin-bottom:1.5rem}
+
+/* CAMBIO DE ACEITE */
+.aceite-sec{background:linear-gradient(135deg,#080808 0%,#181818 50%,#0d0d0d 100%);padding:5rem 2rem;position:relative;overflow:hidden}
+.aceite-sec::before{content:'🛢️';position:absolute;right:-30px;top:50%;transform:translateY(-50%);font-size:20rem;opacity:.035;pointer-events:none;user-select:none}
+.aceite-header{text-align:center;margin-bottom:3.5rem}
+.aceite-header .sec-tag{text-align:center;display:block}
+.aceite-header .sec-title{color:#fff;text-align:center}
+.aceite-header p{color:#888;max-width:620px;margin:0 auto;font-size:1rem;line-height:1.7}
+.aceite-brands{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.aceite-brand{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;overflow:hidden;transition:box-shadow .25s}
+.aceite-brand:hover{box-shadow:0 12px 40px rgba(192,57,43,.18)}
+.aceite-brand-head{padding:1.6rem 2rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:1rem}
+.aceite-brand-head.armor{background:linear-gradient(90deg,rgba(192,57,43,.2),rgba(192,57,43,.05))}
+.aceite-brand-head.liqui{background:linear-gradient(90deg,rgba(30,100,200,.2),rgba(30,100,200,.05))}
+.brand-ico{font-size:2.2rem;line-height:1}
+.brand-name{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;line-height:1}
+.brand-name.armor{color:#E74C3C}
+.brand-name.liqui{color:#3b82f6}
+.brand-tagline{color:#666;font-size:.78rem;text-transform:uppercase;letter-spacing:1px;margin-top:.15rem}
+.aceite-product-list{padding:1.25rem 2rem;display:flex;flex-direction:column;gap:.5rem}
+.aceite-product{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);gap:1rem;transition:background .2s}
+.aceite-product:hover{background:rgba(255,255,255,.07)}
+.prod-info{flex:1}
+.prod-viscosity{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:1px;color:#fff;line-height:1}
+.prod-type{font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;margin-top:.15rem}
+.prod-type.mineral{color:#a0956a}
+.prod-type.semi{color:#27ae60}
+.prod-type.full{color:#3b82f6}
+.prod-type.diesel{color:#f59e0b}
+.prod-price{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--acento);white-space:nowrap;letter-spacing:.5px}
+.prod-price small{font-family:'Nunito',sans-serif;font-size:.7rem;color:#555;display:block;text-align:right;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.aceite-brand-cta{display:block;margin:0 2rem 1.75rem;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.12);color:#bbb;padding:.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;text-align:center;text-decoration:none;text-transform:uppercase;letter-spacing:.5px;transition:background .2s,border-color .2s,color .2s}
+.aceite-brand-cta:hover{background:var(--rojo);border-color:var(--rojo);color:#fff}
+.aceite-footer-note{max-width:1100px;margin:2.5rem auto 0;text-align:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:1.25rem 1.75rem;color:#666;font-size:.88rem;line-height:1.7}
+.aceite-footer-note strong{color:#999}
+@media(max-width:900px){.aceite-brands{grid-template-columns:1fr}}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+.lightbox.active{opacity:1;pointer-events:all}
+.lightbox-inner{position:relative;max-width:90vw;max-height:88vh;display:flex;align-items:center;justify-content:center}
+.lightbox-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:6px;box-shadow:0 8px 48px rgba(0,0,0,.7);display:block;transition:opacity .2s}
+.lightbox-img.fade{opacity:0}
+.lightbox-close{position:fixed;top:20px;right:24px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:1001}
+.lightbox-close:hover{background:var(--rojo);border-color:var(--rojo)}
+.lightbox-arrow{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);color:#fff;width:48px;height:48px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:1001;user-select:none}
+.lightbox-arrow:hover{background:rgba(255,255,255,.25)}
+.lightbox-prev{left:16px}
+.lightbox-next{right:16px}
+.lightbox-caption{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:#ccc;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:rgba(0,0,0,.5);padding:.4rem 1.2rem;border-radius:20px;white-space:nowrap}
+.lightbox-dots{position:fixed;bottom:56px;left:50%;transform:translateX(-50%);display:flex;gap:.5rem}
+.lightbox-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .2s}
+.lightbox-dot.active{background:#fff}
+@media(max-width:580px){.lightbox-arrow{width:38px;height:38px;font-size:1.1rem}.lightbox-prev{left:6px}.lightbox-next{right:6px}}
+
+/* TESTIMONIOS */
+.testimonios-sec{background:#f4f4f4;padding:5rem 2rem}
+.testimonios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2.5rem}
+.testi-card{background:#fff;border-radius:10px;padding:2rem;border:1px solid #e8e8e8;border-top:4px solid var(--rojo);position:relative;transition:box-shadow .2s,transform .2s}
+.testi-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.1);transform:translateY(-2px)}
+.testi-stars{color:#E74C3C;font-size:1.1rem;letter-spacing:2px;margin-bottom:.9rem}
+.testi-quote{color:#555;font-size:.95rem;line-height:1.7;margin-bottom:1.25rem;font-style:italic}
+.testi-quote::before{content:'"';font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--rojo);line-height:0;vertical-align:-.6rem;margin-right:.1rem;opacity:.4}
+.testi-author{display:flex;align-items:center;gap:.75rem;border-top:1px solid #f0f0f0;padding-top:1rem}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--rojo);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#fff;flex-shrink:0}
+.testi-name{font-weight:800;font-size:.9rem;color:var(--negro)}
+.testi-detail{font-size:.78rem;color:#999;text-transform:uppercase;letter-spacing:.5px}
+
+/* BANNER PROMOCIÓN */
+.promo-banner{background:linear-gradient(135deg,#7b1a14 0%,#922B21 40%,#7b1a14 100%);padding:4.5rem 2rem;position:relative;overflow:hidden;text-align:center}
+.promo-banner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(0,0,0,.06) 40px,rgba(0,0,0,.06) 41px)}
+.promo-banner::after{content:'★';position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-size:22rem;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
+.promo-inner{position:relative;z-index:1;max-width:820px;margin:0 auto}
+.promo-tag{display:inline-block;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;padding:5px 18px;border-radius:2px;margin-bottom:1.2rem}
+.promo-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,7vw,5.5rem);color:#fff;letter-spacing:3px;line-height:.95;margin-bottom:1rem}
+.promo-title em{display:block;color:rgba(255,255,255,.55);font-style:normal;font-size:55%}
+.promo-oferta{background:rgba(0,0,0,.25);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;display:inline-block;padding:1.25rem 2.5rem;margin:1.5rem 0 2rem}
+.promo-oferta p{color:#fff;font-size:clamp(1rem,2.5vw,1.25rem);font-weight:800;line-height:1.5}
+.promo-oferta p span{color:#ffd700;font-size:1.1em}
+.promo-condicion{color:rgba(255,255,255,.5);font-size:.8rem;margin-bottom:2rem;letter-spacing:.5px}
+.promo-btn{display:inline-flex;align-items:center;gap:.8rem;background:#fff;color:var(--rojo-dark);padding:1rem 2.4rem;border-radius:6px;font-weight:800;font-size:1rem;text-decoration:none;text-transform:uppercase;letter-spacing:.5px;transition:background .2s,transform .1s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.promo-btn:hover{background:#f0f0f0;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.35)}
+.promo-btn svg{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+
+/* WHATSAPP FLOTANTE */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;display:flex;align-items:center;gap:.65rem;text-decoration:none}
+.wa-float-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.45);position:relative;flex-shrink:0;transition:transform .2s,box-shadow .2s}
+.wa-float-btn:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,.6)}
+.wa-float-btn svg{width:30px;height:30px;fill:#fff}
+.wa-float-btn::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:3px solid #25D366;opacity:0;animation:wa-pulse 2s ease-out infinite}
+.wa-float-label{background:#fff;color:#111;font-weight:800;font-size:.82rem;padding:.45rem .9rem;border-radius:20px;box-shadow:0 2px 12px rgba(0,0,0,.15);white-space:nowrap;opacity:0;transform:translateX(8px);transition:opacity .25s,transform .25s;pointer-events:none}
+.wa-float:hover .wa-float-label{opacity:1;transform:translateX(0)}
+@keyframes wa-pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+@media(max-width:580px){.wa-float{bottom:18px;right:16px}.wa-float-btn{width:52px;height:52px}.wa-float-label{display:none}}
+
+/* HAMBURGUESA */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.nav-hamburger span{display:block;height:2.5px;background:#ccc;border-radius:2px;transition:transform .3s,opacity .3s,background .2s}
+.nav-hamburger:hover span{background:#fff}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.nav-mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:var(--negro);border-bottom:3px solid var(--rojo);z-index:99;overflow:hidden;max-height:0;transition:max-height .35s ease}
+.nav-mobile-menu.open{max-height:400px}
+.nav-mobile-menu ul{list-style:none;padding:1rem 0}
+.nav-mobile-menu ul li a{display:block;padding:.9rem 2rem;color:#bbb;text-decoration:none;font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #1a1a1a;transition:color .2s,background .2s}
+.nav-mobile-menu ul li a:hover{color:#fff;background:rgba(192,57,43,.1)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner,.dark-inner,.form-inner{grid-template-columns:1fr}
+  .hero-img-wrap{display:none}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .nav-mobile-menu{display:block}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item.big{grid-column:span 2}
+}
+@media(max-width:580px){
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-item.big{grid-column:span 1}
+  .form-row{grid-template-columns:1fr}
+  .stats-inner{gap:.5rem}
+  .aceite-brands{grid-template-columns:1fr}
+  .hero-logo-big{height:80px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img src="logo.jpeg" alt="MAHO" class="nav-logo">
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#aceite">Cambio de Aceite</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#citas">Agendar cita</a></li>
+    <li><a href="#ubicacion">Ubicación</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-right">
+    <div class="nav-social">
+      <a href="https://www.instagram.com/automotrizmaho/" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61582130736284" target="_blank" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <a href="https://wa.me/50661382593" class="nav-wa" target="_blank">📲 WhatsApp</a>
+  </div>
+</nav>
+
+<!-- MENÚ MÓVIL -->
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <ul>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#aceite">Cambio de Aceite</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#citas">Agendar cita</a></li>
+    <li><a href="#ubicacion">Ubicación</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div>
+      <img src="logo.jpeg" alt="MAHO Logo" class="hero-logo-big">
+      <span class="hero-badge">✦ Centro de Servicio Automotriz · Desde 2013 ✦</span>
+      <h1>Tu carro<em>en buenas manos</em></h1>
+      <p>Somos un taller familiar con <strong style="color:#fff">13 años de experiencia</strong> en Alajuelita, San José. Trabajamos con honestidad, precisión y el trato cercano que tu vehículo merece.</p>
+      <div class="hero-btns">
+        <a href="#citas" class="btn-red">📅 Agendar cita</a>
+        <a href="#servicios" class="btn-ghost">Ver servicios</a>
+      </div>
+      <div class="hero-social">
+        <span>Seguinos:</span>
+        <a href="https://www.instagram.com/automotrizmaho/" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61582130736284" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="img5.jpeg" alt="Fachada Taller MAHO" class="hero-img-main">
+      <div class="hero-img-badge">
+        <small>Ubicados en</small>
+        Alajuelita<br>San José
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num" data-target="13" data-suffix="+">13+</div><div class="stat-lbl">Años de experiencia</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="400" data-suffix="m">400m</div><div class="stat-lbl">De DEKRA</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="7" data-suffix="">7</div><div class="stat-lbl">Servicios especializados</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="100" data-suffix="%">100%</div><div class="stat-lbl">Compromiso familiar</div></div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Mecánica General</span><span>Frenos y Suspensión</span><span>Alineación y Balanceo</span><span>Cambio de Aceite</span><span>Emisión de Gases</span><span>Limpieza de Inyectores</span><span>Soldadura de Catalizadores</span><span>Preparación para DEKRA</span>
+    <span>Mecánica General</span><span>Frenos y Suspensión</span><span>Alineación y Balanceo</span><span>Cambio de Aceite</span><span>Emisión de Gases</span><span>Limpieza de Inyectores</span><span>Soldadura de Catalizadores</span><span>Preparación para DEKRA</span>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="sec" id="servicios">
+  <div class="sec-inner">
+    <div class="sec-tag">Lo que hacemos</div>
+    <div class="sec-title">Nuestros servicios</div>
+    <p class="sec-sub">Todo lo que tu vehículo necesita, en un solo lugar. Trabajo de calidad con precios justos y honestidad ante todo.</p>
+    <div class="services-grid">
+      <div class="srv"><span class="srv-ico">🔧</span><h3>Mecánica general</h3><p>Diagnóstico y reparación completa de motor, transmisión y sistema de enfriamiento. Experiencia en toda marca y modelo.</p></div>
+      <div class="srv"><span class="srv-ico">🛑</span><h3>Frenos y suspensión</h3><p>Revisión, ajuste y cambio de pastillas, discos, tambores y componentes de suspensión para tu seguridad en carretera.</p></div>
+      <div class="srv"><span class="srv-ico">⚖️</span><h3>Alineación y balanceo</h3><p>Equipo computarizado de última generación para corrección precisa de geometría de ruedas.</p></div>
+      <div class="srv"><span class="srv-ico">🛢️</span><h3>Cambio de aceite</h3><p>Lubricantes premium Liqui-Moly y Armor disponibles. Rápido, limpio y al día con los intervalos del fabricante.</p></div>
+      <div class="srv"><span class="srv-ico">🔬</span><h3>Limpieza de inyectores</h3><p>Laboratorio de inyectores GDI/EFI propio. Limpieza y prueba ultrasónica para recuperar el rendimiento del motor.</p></div>
+      <div class="srv"><span class="srv-ico">🔍</span><h3>Preparación para DEKRA</h3><p>Te dejamos el carro listo para pasar la inspección vehicular sin contratiempos. A solo 400m de DEKRA.</p></div>
+      <div class="srv"><span class="srv-ico">⚡</span><h3>Soldadura y pega de catalizadores</h3><p>Reparación y adaptación de catalizadores con soldadura de precisión. Ahorrás el costo de uno nuevo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER PROMOCIÓN -->
+<section class="promo-banner">
+  <div class="promo-inner">
+    <div class="promo-tag">⚡ Oferta limitada</div>
+    <div class="promo-title">
+      Promoción del Mes
+      <em>Solo para clientes nuevos</em>
+    </div>
+    <div class="promo-oferta">
+      <p>Revisión inicial <span>GRATIS</span> para clientes nuevos<br>que vengan por la página web</p>
+    </div>
+    <div class="promo-condicion">Mencioná la promoción al llegar o al escribir por WhatsApp · Válido en horario de atención</div>
+    <a href="https://wa.me/50661382593?text=Hola%20MAHO!%20Vi%20la%20promoci%C3%B3n%20en%20su%20p%C3%A1gina%20web%20y%20quiero%20aprovechar%20la%20revisi%C3%B3n%20inicial%20GRATIS%20para%20clientes%20nuevos.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" class="promo-btn">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Quiero mi revisión gratis
+    </a>
+  </div>
+</section>
+
+<!-- CAMBIO DE ACEITE -->
+<section class="aceite-sec" id="aceite">
+  <div class="aceite-header">
+    <div class="sec-tag">Servicio exprés</div>
+    <div class="sec-title">Cambio de Aceite</div>
+    <div class="sec-divider" style="margin:0 auto 1.25rem"></div>
+    <p>Trabajamos con dos marcas premium: <strong style="color:#E74C3C">Armor</strong> y <strong style="color:#3b82f6">Liqui-Moly</strong>. Precios fijos por tipo de aceite, rápido y sin sorpresas.</p>
+  </div>
+  <div class="aceite-brands">
+
+    <!-- ARMOR -->
+    <div class="aceite-brand">
+      <div class="aceite-brand-head armor">
+        <span class="brand-ico">🛡️</span>
+        <div>
+          <div class="brand-name armor">Armor</div>
+          <div class="brand-tagline">Lubricantes de alto rendimiento</div>
+        </div>
+      </div>
+      <div class="aceite-product-list">
+        <div class="aceite-product">
+          <div class="prod-info">
+            <div class="prod-viscosity">20W-50</div>
+            <div class="prod-type semi">Semi-Sintético · Estañón</div>
+          </div>
+          <div class="prod-price">₡18,000<small>precio fijo</small></div>
+        </div>
+        <div class="aceite-product">
+          <div class="prod-info">
+            <div class="prod-viscosity">10W-30</div>
+            <div class="prod-type semi">Semi-Sintético</div>
+          </div>
+          <div class="prod-price">₡24,000<small>precio fijo</small></div>
+        </div>
+        <div class="aceite-product">
+          <div class="prod-info">
+            <div class="prod-viscosity">5W-30</div>
+            <div class="prod-type full">Full Sintético</div>
+          </div>
+          <div class="prod-price">₡30,000<small>precio fijo</small></div>
+        </div>
+        <div class="aceite-product">
+          <div class="prod-info">
+            <div class="prod-viscosity">15W-40</div>
+            <div class="prod-type diesel">Mineral · Diesel</div>
+          </div>
+          <div class="prod-price" style="font-size:1rem;color:#888">Consultar<small>por WhatsApp</small></div>
+        </div>
+      </div>
+      <a href="https://wa.me/50661382593?text=Hola%20MAHO!%20Quiero%20cotizar%20un%20cambio%20de%20aceite%20Armor%20para%20mi%20veh%C3%ADculo." target="_blank" class="aceite-brand-cta">📲 Cotizar con Armor</a>
+    </div>
+
+    <!-- LIQUI-MOLY -->
+    <div class="aceite-brand">
+      <div class="aceite-brand-head liqui">
+        <span class="brand-ico">🔵</span>
+        <div>
+          <div class="brand-name liqui">Liqui-Moly</div>
+          <div class="brand-tagline">Tecnología alemana de precisión</div>
+        </div>
+      </div>
+      <div class="aceite-product-list">
+        <div class="aceite-product">
+          <div class="prod-info">
+            <div class="prod-viscosity">20W-50</div>
+            <div class="prod-type mineral">Mineral</div>
+          </div>
+          <div class="prod-price">₡30,000<small>precio fijo</small></div>
+        </div>
+        <div class="aceite-product">
+          <div class="prod-info">
+            <div class="prod-viscosity">10W-30</div>
+            <div class="prod-type full">Full Sintético</div>
+          </div>
+          <div class="prod-price">₡38,000<small>precio fijo</small></div>
+        </div>
+        <div class="aceite-product">
+          <div class="prod-info">
+            <div class="prod-viscosity">5W-30</div>
+            <div class="prod-type full">Full Sintético</div>
+          </div>
+          <div class="prod-price">₡48,000<small>precio fijo</small></div>
+        </div>
+      </div>
+      <a href="https://wa.me/50661382593?text=Hola%20MAHO!%20Quiero%20cotizar%20un%20cambio%20de%20aceite%20Liqui-Moly%20para%20mi%20veh%C3%ADculo." target="_blank" class="aceite-brand-cta">📲 Cotizar con Liqui-Moly</a>
+    </div>
+
+  </div>
+  <div class="aceite-footer-note">
+    <strong style="color:#fff">✅ Todos los precios incluyen:</strong> cambio de filtro de aceite + revisión de niveles + revisión visual.<br>
+    <strong style="color:#aaa">📐 Medida estándar:</strong> precios aplican para vehículos que llevan <strong style="color:#fff">3.5 cuartos de aceite</strong>. Vehículos que requieran más litros pueden tener un costo adicional.<br><br>
+    <span style="background:rgba(192,57,43,.2);border:1px solid rgba(192,57,43,.4);border-radius:6px;padding:.5rem 1rem;display:inline-block;color:#f0a0a0;font-weight:700">
+      🔥 Promoción: agregá el cambio de filtro de aire por solo <span style="color:#E74C3C;font-size:1.05rem">₡5,000 adicionales</span>
+    </span>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="https://wa.me/50661382593?text=Hola%20MAHO!%20Quiero%20cotizar%20un%20cambio%20de%20aceite." target="_blank" style="color:var(--acento);font-weight:700;text-decoration:none">¿Dudas? Escribinos →</a>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="gallery-sec" id="galeria">
+  <div class="sec-inner">
+    <div class="sec-tag">Conocé el taller</div>
+    <div class="sec-title">Nuestras instalaciones y equipo</div>
+    <p class="sec-sub">Equipados con tecnología de punta para darte el mejor servicio.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item big" data-index="0">
+        <img src="img5.jpeg" alt="Fachada MAHO">
+        <div class="overlay"><span class="overlay-label">Fachada del taller</span></div>
+      </div>
+      <div class="gallery-item" data-index="1">
+        <img src="img4.jpeg" alt="Área de mecánica">
+        <div class="overlay"><span class="overlay-label">Área de mecánica</span></div>
+      </div>
+      <div class="gallery-item" data-index="2">
+        <img src="img2.jpeg" alt="Equipo de alineación">
+        <div class="overlay"><span class="overlay-label">Equipo de alineación</span></div>
+      </div>
+      <div class="gallery-item" data-index="3">
+        <img src="img3.jpeg" alt="Lubricantes">
+        <div class="overlay"><span class="overlay-label">Lubricantes premium</span></div>
+      </div>
+      <div class="gallery-item" data-index="4">
+        <img src="img1.jpeg" alt="Laboratorio de inyectores">
+        <div class="overlay"><span class="overlay-label">Lab. inyectores GDI</span></div>
+      </div>
+      <div class="gallery-item" data-index="5">
+        <img src="img6.jpeg" alt="Analizador de gases">
+        <div class="overlay"><span class="overlay-label">Analizador OGA 6000</span></div>
+      </div>
+      <div class="gallery-item" data-index="6">
+        <img src="img7.jpeg" alt="Elevador hidráulico">
+        <div class="overlay"><span class="overlay-label">Elevador hidráulico</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GASES -->
+<section class="dark-sec" id="gases">
+  <div class="dark-inner">
+    <div>
+      <div class="sec-tag" style="color:var(--acento)">Nuestra especialidad</div>
+      <h2>Especialistas en <em>emisión de gases</em></h2>
+      <p>Contamos con analizador de gases OGA 6000 propio. Si tu carro falló la prueba en DEKRA, nosotros lo ajustamos para que pase sin problema.</p>
+      <ul class="checklist">
+        <li>Analizador de gases OGA 6000 instalado en el taller</li>
+        <li>Diagnóstico exacto de HC, CO, CO₂, O₂ y NOx</li>
+        <li>Ajuste fino de mezcla aire-combustible</li>
+        <li>Soldadura y reparación de catalizadores dañados</li>
+        <li>A solo 400 metros de DEKRA Alajuelita</li>
+      </ul>
+      <div class="dekra-badge">
+        <strong>📍 Ubicación estratégica</strong>
+        <span>A 400 metros de DEKRA – revisás el carro y lo llevás a inspección el mismo día</span>
+      </div>
+    </div>
+    <div class="gas-visual">
+      <img src="img6.jpeg" alt="Analizador OGA 6000" class="equipo-img">
+      <div style="color:#888;font-size:.78rem;text-align:center;text-transform:uppercase;letter-spacing:2px;margin:.5rem 0">Niveles de emisión tras ajuste en MAHO</div>
+      <div class="gas-bar-wrap">
+        <div class="gas-label"><span>HC – Hidrocarburos</span><strong>Óptimo ✓</strong></div>
+        <div class="gas-bar"><div class="gas-fill" style="width:18%"></div></div>
+      </div>
+      <div class="gas-bar-wrap">
+        <div class="gas-label"><span>CO – Monóxido de carbono</span><strong>Óptimo ✓</strong></div>
+        <div class="gas-bar"><div class="gas-fill" style="width:12%"></div></div>
+      </div>
+      <div class="gas-bar-wrap">
+        <div class="gas-label"><span>CO₂ – Dióxido de carbono</span><strong>Alto ✓</strong></div>
+        <div class="gas-bar"><div class="gas-fill" style="width:88%;background:#27ae60"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ MAHO -->
+<section class="sec" id="nosotros">
+  <div class="sec-inner">
+    <div class="sec-tag">¿Por qué elegirnos?</div>
+    <div class="sec-title">El taller familiar de confianza</div>
+    <p class="sec-sub">Desde 2013 atendemos a familias de Alajuelita y San José con el compromiso de hacer las cosas bien a la primera.</p>
+    <div class="why-grid">
+      <div class="why-card"><span class="why-ico">👨‍👩‍👧</span><h3>Negocio familiar</h3><p>Somos una familia que ama los carros y ama a sus clientes. Cada vehículo lo tratamos como si fuera el nuestro.</p></div>
+      <div class="why-card"><span class="why-ico">🏆</span><h3>13 años de experiencia</h3><p>Desde 2013 resolviendo problemas mecánicos con conocimiento, calidad y responsabilidad.</p></div>
+      <div class="why-card"><span class="why-ico">🔬</span><h3>Equipo de punta</h3><p>Laboratorio de inyectores, analizador de gases, alineadora computarizada y más herramientas profesionales.</p></div>
+      <div class="why-card"><span class="why-ico">💬</span><h3>Honestidad ante todo</h3><p>Te decimos lo que realmente necesita tu carro, sin trabajos innecesarios. Tu confianza vale más.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios-sec">
+  <div class="sec-inner">
+    <div class="sec-tag">Lo que dicen nuestros clientes</div>
+    <div class="sec-title">Testimonios</div>
+    <p class="sec-sub">Más de 13 años atendiendo a familias de Alajuelita y San José. Esto es lo que dicen quienes confían en MAHO.</p>
+    <div class="testimonios-grid">
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">Llevé mi Corolla porque tenía un ruido extraño en los frenos. En menos de dos horas ya estaba listo y el precio fue muy justo. Honestidad ante todo, eso es MAHO.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RM</div>
+          <div>
+            <div class="testi-name">Randall Morales</div>
+            <div class="testi-detail">Alajuelita · Cliente desde 2020</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">Me prepararon el carro para la DEKRA y pasó sin ningún problema. Vivo a dos cuadras y siempre los recomiendo a los vecinos. Excelente servicio familiar.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">KV</div>
+          <div>
+            <div class="testi-name">Karol Vargas</div>
+            <div class="testi-detail">San José · Cliente desde 2019</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">El cambio de aceite con Liqui-Moly fue rápido y quedé muy satisfecho. Me explicaron todo lo que hicieron sin cobrarme de más. Son muy profesionales y de confianza.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JC</div>
+          <div>
+            <div class="testi-name">José Castro</div>
+            <div class="testi-detail">Desamparados · Cliente desde 2022</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">Tenía el carro con problemas de inyectores y en otros talleres me querían cobrar una fortuna. Aquí lo revisaron, lo limpiaron y volvió a andar de maravilla. ¡Muy recomendados!</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div>
+            <div class="testi-name">Marcela Rojas</div>
+            <div class="testi-detail">Alajuelita · Cliente desde 2021</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO DE CITAS -->
+<section class="form-sec" id="citas">
+  <div class="form-inner">
+    <div class="form-box">
+      <div class="sec-tag">Reservá tu espacio</div>
+      <h3>Agendá tu cita</h3>
+      <p>Completá el formulario y nos ponemos en contacto por WhatsApp para confirmarte la cita. ¡Rápido y sencillo!</p>
+      <div id="appointmentForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="telefono" placeholder="Ej: 8888-8888" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Marca del vehículo</label>
+            <input type="text" id="marca" placeholder="Ej: Toyota, Hyundai…">
+          </div>
+          <div class="form-group">
+            <label>Año del vehículo</label>
+            <input type="text" id="anio" placeholder="Ej: 2018">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Servicio que necesita</label>
+          <select id="servicio">
+            <option value="">— Seleccioná un servicio —</option>
+            <option>Mecánica general</option>
+            <option>Frenos y suspensión</option>
+            <option>Alineación y balanceo</option>
+            <option>Cambio de aceite</option>
+            <option>Limpieza de inyectores</option>
+            <option>Medición y ajuste de gases</option>
+            <option>Preparación para DEKRA</option>
+            <option>Soldadura / pega de catalizador</option>
+            <option>No sé – necesito diagnóstico</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Fecha preferida</label>
+          <input type="date" id="fecha">
+        </div>
+        <div class="form-group">
+          <label>Descripción del problema (opcional)</label>
+          <textarea id="descripcion" placeholder="Contanos brevemente qué le pasa al carro…"></textarea>
+        </div>
+        <button class="btn-submit" onclick="enviarCita()">📲 Enviar solicitud de cita</button>
+        <div class="form-success" id="formSuccess">
+          <p>✅ ¡Solicitud enviada! Nos comunicaremos con vos por WhatsApp para confirmar tu cita.</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-info">
+      <div class="info-card">
+        <h4>📲 ¿Preferís por WhatsApp directo?</h4>
+        <p>Escribinos a <a href="https://wa.me/50661382593" target="_blank">6138-2593</a> y te atendemos de inmediato.</p>
+      </div>
+      <div class="info-card">
+        <h4>🕐 Horario de atención</h4>
+        <p>Lunes a Sábado. Consultá disponibilidad por WhatsApp para confirmar horarios exactos.</p>
+      </div>
+      <div class="info-card">
+        <h4>📍 ¿Cómo llegar?</h4>
+        <p>Estamos en Alajuelita, San José, a solo 400 metros de DEKRA. Fachada roja, no tiene pérdida.</p>
+      </div>
+      <div class="info-card">
+        <h4>⚡ Respuesta rápida</h4>
+        <p>Una vez que enviés tu solicitud, te confirmamos la cita en menos de 2 horas en horario de atención.</p>
+      </div>
+      <div class="info-card">
+        <h4>🔧 ¿Primera vez con nosotros?</h4>
+        <p>Mencioná que venís por la página web y recibís una revisión inicial <strong>sin costo</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAPA -->
+<section class="map-sec" id="ubicacion">
+  <div class="map-header">
+    <div class="sec-tag" style="color:var(--acento);text-align:center">Dónde estamos</div>
+    <h2>Ubicación del taller</h2>
+    <p>Alajuelita, San José — a 400 metros de DEKRA. Fácil de encontrar, fácil de llegar.</p>
+  </div>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5467.862773746027!2d-84.11028122313719!3d9.91037873684217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scr!4v1774476650984!5m2!1ses!2scr"
+    style="display:block;width:100%;height:450px;border:0;filter:grayscale(20%)"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Ubicación Taller MAHO Alajuelita">
+  </iframe>
+</section>
+
+<!-- SOCIAL -->
+<section class="social-sec">
+  <h2>SEGUINOS EN REDES SOCIALES</h2>
+  <p>Mirá nuestros trabajos, consejos y promociones en Instagram y Facebook</p>
+  <div class="social-btns">
+    <a href="https://www.instagram.com/automotrizmaho/" target="_blank" class="social-btn btn-ig">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      @automotrizmaho
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61582130736284" target="_blank" class="social-btn btn-fb">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      MAHO en Facebook
+    </a>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact-sec" id="contacto">
+  <div class="contact-inner">
+    <div class="sec-tag">Estamos para vos</div>
+    <div class="sec-title">Contáctanos hoy</div>
+    <p class="sec-sub" style="margin:0 auto 3rem">¿Tenés algún problema con tu vehículo? Escribinos por WhatsApp, es rápido y fácil.</p>
+    <div class="contact-cards">
+      <div class="cc"><span class="cc-ico">📲</span><h4>WhatsApp</h4><a href="https://wa.me/50661382593" target="_blank">6138-2593</a></div>
+      <div class="cc"><span class="cc-ico">📍</span><h4>Ubicación</h4><p>Alajuelita, San José<br>400m de DEKRA</p></div>
+      <div class="cc"><span class="cc-ico">📸</span><h4>Instagram</h4><a href="https://www.instagram.com/automotrizmaho/" target="_blank">@automotrizmaho</a></div>
+      <div class="cc"><span class="cc-ico">👥</span><h4>Facebook</h4><a href="https://www.facebook.com/profile.php?id=61582130736284" target="_blank">MAHO Automotriz</a></div>
+    </div>
+    <a href="https://wa.me/50661382593?text=Hola%20MAHO%2C%20quisiera%20información%20sobre%20sus%20servicios" class="wa-big" target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Escribir a WhatsApp ahora
+    </a>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <div class="lightbox-inner" id="lightboxInner">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  </div>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">✕</button>
+  <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Anterior">&#8249;</button>
+  <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Siguiente">&#8250;</button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+  <div class="lightbox-dots" id="lightboxDots"></div>
+</div>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/50661382593" class="wa-float" target="_blank" aria-label="Contactar por WhatsApp">
+  <span class="wa-float-label">¡Escribinos!</span>
+  <div class="wa-float-btn">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </div>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logo.jpeg" alt="MAHO Logo" class="footer-logo">
+  <div class="footer-social">
+    <a href="https://www.instagram.com/automotrizmaho/" target="_blank" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61582130736284" target="_blank" title="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+  </div>
+  <p style="color:#555;font-size:.85rem;margin-bottom:.25rem">Centro de Servicio Automotriz MAHO &nbsp;|&nbsp; Alajuelita, San José &nbsp;|&nbsp; <span style="color:#E74C3C">Desde 2013</span></p>
+  <p style="color:#444;font-size:.8rem;margin-top:.3rem">📲 <a href="https://wa.me/50661382593" style="color:#555;text-decoration:none">6138-2593</a> &nbsp;·&nbsp; 400m de DEKRA</p>
+</footer>
+
+<script>
+function enviarCita() {
+  const nombre = document.getElementById('nombre').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
+  const marca = document.getElementById('marca').value.trim();
+  const anio = document.getElementById('anio').value.trim();
+  const servicio = document.getElementById('servicio').value;
+  const fecha = document.getElementById('fecha').value;
+  const descripcion = document.getElementById('descripcion').value.trim();
+
+  if (!nombre || !telefono) {
+    alert('Por favor ingresá tu nombre y teléfono para continuar.');
+    return;
+  }
+
+  let mensaje = `Hola MAHO! 👋 Quiero agendar una cita.\n\n`;
+  mensaje += `*Nombre:* ${nombre}\n`;
+  mensaje += `*Teléfono:* ${telefono}\n`;
+  if (marca) mensaje += `*Vehículo:* ${marca}${anio ? ' ' + anio : ''}\n`;
+  if (servicio) mensaje += `*Servicio:* ${servicio}\n`;
+  if (fecha) mensaje += `*Fecha preferida:* ${fecha}\n`;
+  if (descripcion) mensaje += `*Descripción:* ${descripcion}\n`;
+
+  const url = `https://wa.me/50661382593?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
+
+  document.getElementById('formSuccess').style.display = 'block';
+  document.getElementById('nombre').value = '';
+  document.getElementById('telefono').value = '';
+  document.getElementById('marca').value = '';
+  document.getElementById('anio').value = '';
+  document.getElementById('servicio').value = '';
+  document.getElementById('fecha').value = '';
+  document.getElementById('descripcion').value = '';
+}
+
+// Lightbox
+(function(){
+  const images = [
+    {src:'img5.jpeg', caption:'Fachada del taller'},
+    {src:'img4.jpeg', caption:'Área de mecánica'},
+    {src:'img2.jpeg', caption:'Equipo de alineación'},
+    {src:'img3.jpeg', caption:'Lubricantes premium'},
+    {src:'img1.jpeg', caption:'Lab. inyectores GDI'},
+    {src:'img6.jpeg', caption:'Analizador OGA 6000'},
+    {src:'img7.jpeg', caption:'Elevador hidráulico'},
+  ];
+
+  const lb        = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lightboxImg');
+  const lbCaption = document.getElementById('lightboxCaption');
+  const lbDots    = document.getElementById('lightboxDots');
+  const lbClose   = document.getElementById('lightboxClose');
+  const lbPrev    = document.getElementById('lightboxPrev');
+  const lbNext    = document.getElementById('lightboxNext');
+  let current = 0;
+
+  // Crear dots
+  images.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'lightbox-dot';
+    d.addEventListener('click', () => goTo(i));
+    lbDots.appendChild(d);
+  });
+
+  function updateDots() {
+    lbDots.querySelectorAll('.lightbox-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function goTo(index) {
+    current = (index + images.length) % images.length;
+    lbImg.classList.add('fade');
+    setTimeout(() => {
+      lbImg.src = images[current].src;
+      lbImg.alt = images[current].caption;
+      lbCaption.textContent = images[current].caption;
+      updateDots();
+      lbImg.classList.remove('fade');
+    }, 180);
+  }
+
+  function openLightbox(index) {
+    current = index;
+    lbImg.src = images[current].src;
+    lbImg.alt = images[current].caption;
+    lbCaption.textContent = images[current].caption;
+    updateDots();
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.gallery-item[data-index]').forEach(item => {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => goTo(current - 1));
+  lbNext.addEventListener('click', () => goTo(current + 1));
+
+  // Cerrar al hacer clic fuera de la imagen
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+
+  // Teclado
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+})();
+
+// Contador de estadísticas
+const statsBar = document.querySelector('.stats-bar');
+const statNums = document.querySelectorAll('.stat-num[data-target]');
+
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+  function step(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(ease * target) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target + suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      statNums.forEach(animateCounter);
+      statsObserver.disconnect();
+    }
+  });
+}, { threshold: 0.4 });
+
+statsObserver.observe(statsBar);
+
+// Menú hamburguesa
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('navMobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// Set min date to today
+const fechaInput = document.getElementById('fecha');
+if (fechaInput) {
+  const today = new Date().toISOString().split('T')[0];
+  fechaInput.setAttribute('min', today);
+}
+</script>
+</body>
+</html>
